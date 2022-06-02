@@ -4,51 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TicTacToe</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <script src="index.js"></script>
     <h1>Singule Player TicTacToe Game</h1>
+    <pre id="winLossScreen">| Wins: 0| Loss: 0| Draws: 0</pre>
     <div class="ButtonSquare">
         <table>
             <tr>
                 <td>
-                    <button id="button1" onclick="button1()">-</button>
+                    <button id="button1" onclick="inputIntoGrid(0)">-</button>
                 </td>
                 <td>
-                    <button id="button2"  onclick="button2()">-</button>
+                    <button id="button2"  onclick="inputIntoGrid(1)">-</button>
                 </td>
                 <td>
-                    <button id="button3" onclick="button3()">-</button>
-                </td>
-            </tr>
-            <br>
-            <tr>
-                <td>
-                    <button id="button4" onclick="button4()">-</button>
-                </td>
-                <td>
-                    <button id="button5" onclick="button5()">-</button>
-                </td>
-                <td>
-                    <button id="button6" onclick="button6()">-</button>
+                    <button id="button3" onclick="inputIntoGrid(2)">-</button>
                 </td>
             </tr>
             <br>
             <tr>
                 <td>
-                    <button id="button7" onclick="button7()">-</button>
+                    <button id="button4" onclick="inputIntoGrid(3)">-</button>
                 </td>
                 <td>
-                    <button id="button8" onclick="button8()">-</button>
+                    <button id="button5" onclick="inputIntoGrid(4)">-</button>
                 </td>
                 <td>
-                    <button id="button9" onclick="button9()">-</button>
+                    <button id="button6" onclick="inputIntoGrid(5)">-</button>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <button id="button7" onclick="inputIntoGrid(6)">-</button>
+                </td>
+                <td>
+                    <button id="button8" onclick="inputIntoGrid(7)">-</button>
+                </td>
+                <td>
+                    <button id="button9" onclick="inputIntoGrid(8)">-</button>
                 </td>
         </table>
         <br>
-        <button onclick="resetButton()">Restart Game</button>
+        <button onclick="counterReset()">Restart The Counter</button>
     </div>
+    <!--Add credit to the bottom of the page-->
+    <p>Created by: <a href="https://github.com/Liam-07J?tab=repositories">Liam-07J on Github</a></p>
 </body>
 </html>

@@ -1,6 +1,23 @@
 grid = [ "-", "-", "-"
         , "-", "-", "-"
         , "-", "-", "-"]
+win = 0
+loss = 0
+draw = 0
+
+function inputIntoGrid(input){
+    // check if there is already an x or o in the box
+    if(grid[input] != "-"){
+        alert("This box is already taken!");
+    }
+    else{
+        grid[input] = "X";
+        console.log(grid);
+        computerGuess();
+        htmlEdit();
+        checkWin();
+    }
+}
 function computerGuess(){
     // if grid is full, end game
     if(grid.includes( "-")){ 
@@ -10,105 +27,119 @@ function computerGuess(){
         grid[random] = "O";
         console.log(grid);
     }
-    checkWin();
-
 }
 function htmlEdit(){
-    document.getElementById("button1").innerHTML = grid[0];
-    document.getElementById("button2").innerHTML = grid[1];
-    document.getElementById("button3").innerHTML = grid[2];
-    document.getElementById("button4").innerHTML = grid[3];
-    document.getElementById("button5").innerHTML = grid[4];
-    document.getElementById("button6").innerHTML = grid[5];
-    document.getElementById("button7").innerHTML = grid[6];
-    document.getElementById("button8").innerHTML = grid[7];
-    document.getElementById("button9").innerHTML = grid[8];
+    // cycles through grid and changes html to reflect grid
+    for (i=0; i<9; i++){
+        buttonValue = "button" + (i+1);
+        document.getElementById(buttonValue).innerHTML = grid[i];
+        // if x is in grid change box color to red
+        if(grid[i] == "X"){
+            document.getElementById(buttonValue).style.backgroundColor = "red";
+        }
+        if(grid[i] == "O"){
+            document.getElementById(buttonValue).style.backgroundColor = "blue";
+        }
+    }
 }
-function inputIntoGrid(input){
-    grid[input] = "X";
-    console.log(grid);
-    computerGuess();
-    htmlEdit();
+function winGame(){
+    win++;
+    document.getElementById("winLossScreen").innerHTML = "| Wins: " + win + "| Loss: " + loss + "| Draws: " + draw
+    alert("You Win!");
+    resetButton();
+}
+function lossGame(){
+    loss++;
+    document.getElementById("winLossScreen").innerHTML = "| Wins: " + win + "| Loss: " + loss + "| Draws: " + draw
+    alert("You Lose!");
+    resetButton();
+}
+function drawGame(){
+    draw++
+    document.getElementById("winLossScreen").innerHTML = "| Wins: " + win + "| Loss: " + loss + "| Draws: " + draw
+    alert("Draw!");
+    resetButton();
 }
 function checkWin(){
-    if(grid[0] == grid[1] && grid[1] == grid[2] && grid[0] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    // check if there is a win
+    if(grid[0] == "X" && grid[1] == "X" && grid[2] == "X"){
+        winGame();
     }
-    else if(grid[3] == grid[4] && grid[4] == grid[5] && grid[3] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[3] == "X" && grid[4] == "X" && grid[5] == "X"){
+        winGame();
     }
-    else if(grid[6] == grid[7] && grid[7] == grid[8] && grid[6] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[6] == "X" && grid[7] == "X" && grid[8] == "X"){
+        winGame();
     }
-    else if(grid[0] == grid[3] && grid[3] == grid[6] && grid[0] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[0] == "X" && grid[3] == "X" && grid[6] == "X"){
+        winGame();
     }
-    else if(grid[1] == grid[4] && grid[4] == grid[7] && grid[1] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[1] == "X" && grid[4] == "X" && grid[7] == "X"){
+        winGame();
     }
-    else if(grid[2] == grid[5] && grid[5] == grid[8] && grid[2] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[2] == "X" && grid[5] == "X" && grid[8] == "X"){
+        winGame();
     }
-    else if(grid[0] == grid[4] && grid[4] == grid[8] && grid[0] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[0] == "X" && grid[4] == "X" && grid[8] == "X"){
+        winGame();
     }
-    else if(grid[2] == grid[4] && grid[4] == grid[6] && grid[2] !=  "-"){
-        alert("You Win!");
-        resetButton();
+    if(grid[2] == "X" && grid[4] == "X" && grid[6] == "X"){
+        winGame();
     }
-    else if(grid.includes( "-")){
-        return;
+    // check if there is a loss
+    if(grid[0] == "O" && grid[1] == "O" && grid[2] == "O"){
+        lossGame();
+    }
+    if(grid[3] == "O" && grid[4] == "O" && grid[5] == "O"){
+        lossGame();
+    }
+    if(grid[6] == "O" && grid[7] == "O" && grid[8] == "O"){
+        lossGame();
+    }
+    if(grid[0] == "O" && grid[3] == "O" && grid[6] == "O"){
+        lossGame();
+    }
+    if(grid[1] == "O" && grid[4] == "O" && grid[7] == "O"){
+        lossGame();
+    }
+    if(grid[2] == "O" && grid[5] == "O" && grid[8] == "O"){
+        lossGame();
+    }
+    if(grid[0] == "O" && grid[4] == "O" && grid[8] == "O"){
+        lossGame();
+    }
+
+    if(grid[2] == "O" && grid[4] == "O" && grid[6] == "O"){
+        lossGame();
+    } 
+    // check if the board is full
+    if(grid.includes( "-")){
+        // do nothing
     }
     else{
-        alert("You Lose!");
+        drawGame();
     }
-}
-// Buttons 
-function button1(){
-    inputIntoGrid(0)
-}
-function button2(){
-    inputIntoGrid(1)
-}
-function button3(){
-    inputIntoGrid(2)
-}
-function button4(){
-    inputIntoGrid(3)
-}
-function button5(){
-    inputIntoGrid(4)
-}
-function button6(){
-    inputIntoGrid(5)
-}
-function button7(){
-    inputIntoGrid(6)
-}
-function button8(){
-    inputIntoGrid(7)
-}
-function button9(){
-    inputIntoGrid(8)
+    // change winLosseScreen to reflect win and loss
+    document.getElementById("winLossScreen").innerHTML = "| Wins: " + win + "| Loss: " + loss + "| Draws: " + draw
 }
 function resetButton(){
     grid = [ "-", "-", "-"
             , "-", "-", "-"
             , "-", "-", "-"]
-    document.getElementById("button1").innerHTML = "-"
-    document.getElementById("button2").innerHTML = "-"
-    document.getElementById("button3").innerHTML = "-";
-    document.getElementById("button4").innerHTML = "-";
-    document.getElementById("button5").innerHTML = "-";
-    document.getElementById("button6").innerHTML = "-";
-    document.getElementById("button7").innerHTML = "-";
-    document.getElementById("button8").innerHTML = "-";
-    document.getElementById("button9").innerHTML = "-";
+    for (i=0; i<9; i++){
+        buttonValue = "button" + (i+1);
+        document.getElementById(buttonValue).innerHTML = "-"
+    }
+    // change box colour back to green
+    for (i=0; i<9; i++){
+        buttonValue = "button" + (i+1);
+        document.getElementById(buttonValue).style.backgroundColor = "#4CAF50";
+    }
+}
+function counterReset(){
+    console.log("reset");
+    win = 0;
+    loss = 0;
+    document.getElementById("winLossScreen").innerHTML = "Wins: " + win + " Loss: " + loss + " Draws: " + draw
+    resetButton();
 }

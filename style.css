@@ -1,6 +1,6 @@
 .ButtonSquare {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-top: -100px;
     margin-left: -100px;
@@ -29,4 +29,19 @@ h1 {
 }
 body{
     background-color: #000000;
+}
+pre {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    /*move text up*/
+    margin-top: -3px;
+}
+p {
+    /*move text to bottom of the page*/
+    margin-top: 400px;
+    color: white;
+
 }
